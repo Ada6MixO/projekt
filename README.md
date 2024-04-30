@@ -1,4 +1,4 @@
-# projekt
+# XDPROJ
 Název projektu: XDPROJ
 Použité technologie: HTML, CSS, JS
 HTML - rozložení stránky
