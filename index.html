@@ -23,8 +23,30 @@
     </nav>
 
     <div class="game-container">
-        <img src="images/click-mid.png" alt="bod pro klikání" class="click-game" draggable="false">
-        <p id="counter">0</p>
+        <div class="game-left">
+            <img src="images/click-mid.png" alt="bod pro klikání" class="click-game" draggable="false">
+            <p id="counter">0</p>
+        </div>
+        <div class="game-right">
+            <div id="upgrades">
+                <h2>Upgrades</h2>
+                <ul>
+                    <li>
+                        <button class="upgrade-btn" data-cost="10" data-multiplier="2">Upgrade 1 (x2)</button>
+                        <span class="upgrade-cost">Cost: 10 points</span>
+                    </li>
+                    <li>
+                        <button class="upgrade-btn" data-cost="20" data-multiplier="3">Upgrade 2 (x3)</button>
+                        <span class="upgrade-cost">Cost: 20 points</span>
+                    </li>
+                    <li>
+                        <button class="upgrade-btn" data-cost="30" data-multiplier="4">Upgrade 3 (x4)</button>
+                        <span class="upgrade-cost">Cost: 30 points</span>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
     </div>
 
 </div>   

@@ -211,6 +211,15 @@ header{
     transition: 250ms;
 }
 
+.game-left, .game-right {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.game-right {
+    margin-left: 200px;
+}
+
 @media only screen and (max-width: 600px){
     .nav-button{
         display: none;
@@ -248,4 +257,42 @@ header{
     .nav-menu-btn i:hover{
         background: rgba(255, 255, 255, 0.15);
     }
+}
+
+/* Styly pro nabídku s vylepšeními */
+
+#upgrades {
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* poloprůhledné ztmavení */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* rozmazání okrajů */
+    transition: width 0.3s ease; /* plynulý přechod */
+}
+
+#upgrades h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.upgrade-btn {
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.upgrade-btn:hover {
+    background-color: #0056b3;
+}
+
+.upgrade-cost {
+    display: block;
+    font-size: 0.8em;
+    margin-top: 5px;
+    color: #888;
 }
