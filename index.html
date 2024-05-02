@@ -22,7 +22,30 @@
         </div>
     </nav>
 
-    <img src="images/click-mid.png" alt="" href="" class="click-game">
+    <div class="game-container">
+        <img src="images/click-mid.png" alt="bod pro klikání" class="click-game" draggable="false">
+        <p id="counter">0</p>
+    </div>
+
 </div>   
+
+<script>
+    // Najdeme obrázek s třídou "click-game"
+    var clickGameImage = document.querySelector('.click-game');
+
+    // Najdeme počítadlo
+    var counterDisplay = document.getElementById('counter');
+
+    // Inicializujeme počítadlo kliknutí
+    var clickCount = 0;
+
+    // Přidáme posluchač události na kliknutí na obrázek
+    clickGameImage.addEventListener('click', function() {
+        // Zvýšíme počet kliknutí
+        clickCount++;
+        // Aktualizujeme počet v počítadle
+        counterDisplay.textContent = clickCount;
+    });
+</script>
 </body>
 </html>

@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    user-select: none;
 }
 body{
     background: url("../images/background.jpg");
@@ -185,6 +186,31 @@ header{
 .two label a:hover{
     text-decoration: underline;
 }
+
+#counter {
+    font-size: 50px;
+    text-align: center;
+    color: #fff;
+    margin-top: 50px;
+    cursor: default;
+}
+
+.click-game {
+    height: 360px;
+    width: 360px;
+    transition: 250ms;
+}
+
+.click-game:hover {
+    transform: scale(1.1);
+    transition: 250ms;
+}
+
+.click-game:active {
+    transform: scale(0.95);
+    transition: 250ms;
+}
+
 @media only screen and (max-width: 600px){
     .nav-button{
         display: none;
