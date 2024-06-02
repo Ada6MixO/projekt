@@ -24,49 +24,75 @@
 
     <div class="game-container">
         <div class="game-left">
-            <img src="images/click-mid.png" alt="bod pro klikání" class="click-game" draggable="false">
-            <p id="counter">0</p>
+            <p id="score">0</p>
+            <img src="images/click-mid.png" alt="bod pro klikání" class="click-game" id="clicker" draggable="false">
         </div>
         <div class="game-right">
-            <div id="upgrades">
-                <h2>Upgrádes</h2>
-                <ul>
-                    <li>
-                        <button class="upgrade-btn" data-cost="10" data-multiplier="2">Upgrade 1 (x2)</button>
-                        <span class="upgrade-cost">Cost: 10 points</span>
-                    </li>
-                    <li>
-                        <button class="upgrade-btn" data-cost="20" data-multiplier="3">Upgrade 2 (x3)</button>
-                        <span class="upgrade-cost">Cost: 20 points</span>
-                    </li>
-                    <li>
-                        <button class="upgrade-btn" data-cost="30" data-multiplier="4">Upgrade 3 (x4)</button>
-                        <span class="upgrade-cost">Cost: 30 points</span>
-                    </li>
-                </ul>
-            </div>
-            
+            <button class="button-82-pushable" role="button" id="upgrade">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text" id="upgrade-button-content">
+                  (1x) NÁSOBIČ 100
+                </span>
+            </button>
+            <button class="button-82-pushable" role="button" id="autoclicker-upgrade">
+                <span class="button-82-shadow"></span>
+                <span class="button-82-edge"></span>
+                <span class="button-82-front text" id="upgrade-autoclicker-button-content">
+                  (0) OTROK 100
+                </span>
+            </button>
         </div>
     </div>
 
 </div>   
 
 <script>
-    // Najdeme obrázek s třídou "click-game"
-    var clickGameImage = document.querySelector('.click-game');
+    let score = 0;
+    let pointsPerClick = 1;
+    let upgradeCost = 100;
+    let upgradeAutoclickerCost = 1000;
+    let otroku = 0;
 
-    // Najdeme počítadlo
-    var counterDisplay = document.getElementById('counter');
+    const scoreElement = document.getElementById('score');
+    const clickerButton = document.getElementById('clicker');
+    const upgradeButton = document.getElementById('upgrade');
+    const upgradeButtonContent = document.getElementById('upgrade-button-content');
+    const upgradeButtonAutoclicker = document.getElementById('autoclicker-upgrade');
+    const upgradeButtonAutoclickerContent = document.getElementById('upgrade-autoclicker-button-content');
 
-    // Inicializujeme počítadlo kliknutí
-    var clickCount = 0;
+    clickerButton.addEventListener('click', () => {
+        score += pointsPerClick;
+        scoreElement.textContent = score;
+        if (score >= upgradeCost) {
+            upgradeButton.disabled = false;
+        }
+    });
 
-    // Přidáme posluchač události na kliknutí na obrázek
-    clickGameImage.addEventListener('click', function() {
-        // Zvýšíme počet kliknutí
-        clickCount++;
-        // Aktualizujeme počet v počítadle
-        counterDisplay.textContent = clickCount;
+    upgradeButton.addEventListener('click', () => {
+        if (score >= upgradeCost) {
+            score -= upgradeCost;
+            pointsPerClick *= 2;
+            upgradeCost *= 10;
+            upgradeButtonContent.textContent = '(' + pointsPerClick + 'x) NÁSOBIČ ' + upgradeCost;
+            scoreElement.textContent = score;
+            if (score < upgradeCost) {
+                upgradeButton.disabled = true;
+            }
+        }
+    });
+
+    upgradeButtonAutoclicker.addEventListener('click', () => {
+        if (score >= upgradeAutoclickerCost && otroku < 10) {
+            score -= upgradeAutoclickerCost;
+            scoreElement.textContent = score;
+            otroku += 1;
+            upgradeButtonAutoclickerContent.textContent = '(' + otroku + ') OTROK 1000'
+            setInterval(() => {
+                score += otroku;
+                scoreElement.textContent = score;
+            }, 1000);
+        }
     });
 </script>
 </body>
