@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/contactme-style.css">
     <title>XDPROJ - O mně</title>
 </head>
 <body>
@@ -22,6 +22,32 @@
             </ul>
         </div>
     </nav>
+<div class="container">
+    <p>Kontaktujte mě!</p>
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- Replace with your Access Key -->
+        <input type="hidden" name="access_key" value="65270e06-37a3-41b3-a5f1-052463d52ae5">
+    
+        <div class="form">
+            <input placeholder="Vaše jméno" type="text" name="name" required>
+        </div>
+        <div class="form">
+            <input placeholder="E-mail" type="email" name="email" required>
+        </div>
+        <div class="form-message">
+            <textarea placeholder="Zpráva pro nás" name="message" required></textarea>
+        </div>
+    
+        <!-- hCaptcha Spam Protection -->
+        <div class="h-captcha" data-captcha="true"></div>
+    
+        <button class="button-54" role="button" type="submit">ODESLAT</button>
+
+    </form>
+    <!-- Required for hCaptcha -->
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+</div>
 </div>
 </body>
 </html>
