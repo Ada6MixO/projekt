@@ -367,3 +367,22 @@ header{
 .button-82-pushable:focus:not(:focus-visible) {
   outline: none;
 }
+
+.ellipse-clicker {
+    height: 300px;
+    width: 300px;
+    background-color: rgb(33, 187, 187);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.ellipse-clicker:hover {
+    scale: 110%;
+    transition: 0.3s;
+}
+
+.ellipse-clicker:active {
+    scale: 95%;
+    transition: 0.3s;
+}
+

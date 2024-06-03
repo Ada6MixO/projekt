@@ -26,7 +26,8 @@
     <div class="game-container">
         <div class="game-left">
             <p id="score">0</p>
-            <img src="images/click-mid.png" alt="bod pro klikání" class="click-game" id="clicker" draggable="false">
+            <!-- <img src="images/click-mid.png" alt="bod pro klikání" class="click-game" id="clicker" draggable="false"> -->
+            <div class="ellipse-clicker" id="clicker"></div>
         </div>
         <div class="game-right">
             <button class="button-82-pushable" role="button" id="upgrade">
@@ -40,7 +41,7 @@
                 <span class="button-82-shadow"></span>
                 <span class="button-82-edge"></span>
                 <span class="button-82-front text" id="upgrade-autoclicker-button-content">
-                  (0) OTROK 1000
+                  (0) OTROK 100
                 </span>
             </button>
         </div>
@@ -52,7 +53,7 @@
     let score = 0;
     let pointsPerClick = 1;
     let upgradeCost = 100;
-    let upgradeAutoclickerCost = 1000;
+    let upgradeAutoclickerCost = 100;
     let otroku = 0;
 
     const scoreElement = document.getElementById('score');
@@ -65,30 +66,25 @@
     clickerButton.addEventListener('click', () => {
         score += pointsPerClick;
         scoreElement.textContent = score;
-        if (score >= upgradeCost) {
-            upgradeButton.disabled = false;
-        }
     });
 
     upgradeButton.addEventListener('click', () => {
         if (score >= upgradeCost) {
             score -= upgradeCost;
             pointsPerClick *= 2;
-            upgradeCost *= 10;
+            upgradeCost *= 5;
             upgradeButtonContent.textContent = '(' + pointsPerClick + 'x) NÁSOBIČ ' + upgradeCost;
             scoreElement.textContent = score;
-            if (score < upgradeCost) {
-                upgradeButton.disabled = true;
-            }
         }
     });
 
     upgradeButtonAutoclicker.addEventListener('click', () => {
-        if (score >= upgradeAutoclickerCost && otroku < 10) {
+        if (score >= upgradeAutoclickerCost) {
             score -= upgradeAutoclickerCost;
             scoreElement.textContent = score;
             otroku += 1;
-            upgradeButtonAutoclickerContent.textContent = '(' + otroku + ') OTROK 1000'
+            upgradeAutoclickerCost += 100;
+            upgradeButtonAutoclickerContent.textContent = '(' + otroku + ') OTROK ' + upgradeAutoclickerCost;
             setInterval(() => {
                 score += otroku;
                 scoreElement.textContent = score;
