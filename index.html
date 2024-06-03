@@ -30,24 +30,23 @@
     <div class="game-container">
         <div class="game-left">
             <p id="score">0</p>
-            <!-- <img src="images/click-mid.png" alt="bod pro klikání" class="click-game" id="clicker" draggable="false"> -->
             <div class="ellipse-clicker" id="clicker"></div>
         </div>
         <div class="game-right">
-            <button class="button-82-pushable" role="button" id="upgrade">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text" id="upgrade-button-content">
-                  (1x) NÁSOBIČ 100
-                </span>
-            </button>
-            <button class="button-82-pushable" role="button" id="autoclicker-upgrade">
-                <span class="button-82-shadow"></span>
-                <span class="button-82-edge"></span>
-                <span class="button-82-front text" id="upgrade-autoclicker-button-content">
-                  (0) OTROK 100
-                </span>
-            </button>
+            <div class="upgrades-container">
+                <div class="upgrade">
+                    <p id="upgrade-p">NÁSOBIČ (1x)</p>
+                    <button class="button-19" role="button" id="upgrade" disabled>100</button>
+                </div>
+                <div class="upgrade">
+                    <p id="autoclicker-upgrade-p">OTROCI (0)</p>
+                    <button class="button-19" role="button" id="autoclicker-upgrade" disabled>50</button>
+                </div>
+                <div class="upgrade">
+                    <p id="worker-upgrade-p">BRIGÁDNÍCI (0)</p>
+                    <button class="button-19" role="button" id="worker-upgrade" disabled>1000</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>   
