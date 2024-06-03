@@ -24,36 +24,32 @@ clickerButton.addEventListener('click', () => {
 });
 
 upgradeButton.addEventListener('click', () => {
-    if (score >= upgradeCost) {
-        score -= upgradeCost;
-        pointsPerClick *= 2;
-        upgradeCost *= 5;
-        upgradeLabel.textContent = 'NÁSOBIČ (' + pointsPerClick + 'x)';
-        upgradeButton.textContent = upgradeCost;
-        scoreElement.textContent = score;
-        checkupgrades();
-    }
+    score -= upgradeCost;
+    pointsPerClick *= 2;
+    upgradeCost *= 5;
+    upgradeLabel.textContent = 'NÁSOBIČ (' + pointsPerClick + 'x)';
+    upgradeButton.textContent = upgradeCost;
+    scoreElement.textContent = score;
+    checkupgrades();
 });
 
 upgradeButtonAutoclicker.addEventListener('click', () => {
-    if (score >= upgradeAutoclickerCost) {
-        score -= upgradeAutoclickerCost;
-        otroku += 1;
-        upgradeAutoclickerCost += 50;
-        upgradeLabelAutoclicker.textContent = 'OTROCI (' + otroku + ')';
-        upgradeButtonAutoclicker.textContent = upgradeAutoclickerCost;
+    score -= upgradeAutoclickerCost;
+    otroku += 1;
+    upgradeAutoclickerCost += 50;
+    upgradeLabelAutoclicker.textContent = 'OTROCI (' + otroku + ')';
+    upgradeButtonAutoclicker.textContent = upgradeAutoclickerCost;
+    scoreElement.textContent = score;
+    checkupgrades();
+    if (intervalOtroci) {
+        clearInterval(intervalOtroci);
+        intervalOtroci = null;
+    }
+    intervalOtroci = setInterval(() => {
+        score += otroku;
         scoreElement.textContent = score;
         checkupgrades();
-        if (intervalOtroci) {
-            clearInterval(intervalOtroci);
-            intervalOtroci = null;
-        }
-        intervalOtroci = setInterval(() => {
-            score += otroku;
-            scoreElement.textContent = score;
-            checkupgrades();
-        }, 1000);
-    }
+    }, 1000);
 });
 
 upgradeButtonWorker.addEventListener('click', () => {
