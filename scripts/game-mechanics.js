@@ -4,6 +4,8 @@ let upgradeCost = 100;
 let upgradeAutoclickerCost = 50;
 let otroku = 0;
 let intervalOtroci;
+let interval;
+let addPerInterval = 0;
 let upgradeWorkerCost = 1000;
 let workers = 0;
 let intervalWorkers;
@@ -26,7 +28,7 @@ clickerButton.addEventListener('click', () => {
 upgradeButton.addEventListener('click', () => {
     score -= upgradeCost;
     pointsPerClick *= 2;
-    upgradeCost *= 5;
+    upgradeCost *= 2;
     upgradeLabel.textContent = 'NÁSOBIČ (' + pointsPerClick + 'x)';
     upgradeButton.textContent = upgradeCost;
     scoreElement.textContent = score;
@@ -41,15 +43,7 @@ upgradeButtonAutoclicker.addEventListener('click', () => {
     upgradeButtonAutoclicker.textContent = upgradeAutoclickerCost;
     scoreElement.textContent = score;
     checkupgrades();
-    if (intervalOtroci) {
-        clearInterval(intervalOtroci);
-        intervalOtroci = null;
-    }
-    intervalOtroci = setInterval(() => {
-        score += otroku;
-        scoreElement.textContent = score;
-        checkupgrades();
-    }, 1000);
+    intervalupdate(3);
 });
 
 upgradeButtonWorker.addEventListener('click', () => {
@@ -60,15 +54,7 @@ upgradeButtonWorker.addEventListener('click', () => {
     upgradeButtonWorker.textContent = upgradeWorkerCost;
     scoreElement.textContent = score;
     checkupgrades();
-    if (intervalWorkers) {
-        clearInterval(intervalWorkers);
-        intervalWorkers = null;
-    }
-    intervalWorkers = setInterval(() => {
-        score += workers*15;
-        scoreElement.textContent = score;
-        checkupgrades();
-    }, 1000);
+    intervalupdate(15);
 });
 
 function checkupgrades(){
@@ -91,5 +77,17 @@ function checkupgrades(){
     }
     else {
         upgradeButtonWorker.disabled = true;
+    }
+}
+
+function intervalupdate(addToInterval) {
+    addPerInterval += addToInterval;
+    if (interval != null) {}
+    else {
+        interval = setInterval (() => {
+            score += addPerInterval;
+            scoreElement.textContent = score;
+            checkupgrades();
+        }, 1000);
     }
 }
