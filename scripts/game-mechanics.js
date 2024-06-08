@@ -1,14 +1,13 @@
-let score = 0;
-let pointsPerClick = 1;
 let upgradeCost = 100;
 let upgradeAutoclickerCost = 50;
-let otroku = 0;
-let intervalOtroci;
+let upgradeWorkerCost = 1000;
+let score = 0;
+let pointsPerClick = 1;
 let interval;
 let addPerInterval = 0;
-let upgradeWorkerCost = 1000;
 let workers = 0;
-let intervalWorkers;
+let otroku = 0;
+
 
 const scoreElement = document.getElementById('score');
 const clickerButton = document.getElementById('clicker');
@@ -18,6 +17,10 @@ const upgradeButtonAutoclicker = document.getElementById('autoclicker-upgrade');
 const upgradeLabelAutoclicker = document.getElementById('autoclicker-upgrade-p');
 const upgradeButtonWorker = document.getElementById('worker-upgrade');
 const upgradeLabelWorker = document.getElementById('worker-upgrade-p');
+
+upgradeButton.textContent = upgradeCost;
+upgradeButtonAutoclicker.textContent = upgradeAutoclickerCost;
+upgradeButtonWorker.textContent = upgradeWorkerCost;
 
 clickerButton.addEventListener('click', () => {
     score += pointsPerClick;
@@ -38,7 +41,7 @@ upgradeButton.addEventListener('click', () => {
 upgradeButtonAutoclicker.addEventListener('click', () => {
     score -= upgradeAutoclickerCost;
     otroku += 1;
-    upgradeAutoclickerCost += 50;
+    upgradeAutoclickerCost *= 2;
     upgradeLabelAutoclicker.textContent = 'OTROCI (' + otroku + ')';
     upgradeButtonAutoclicker.textContent = upgradeAutoclickerCost;
     scoreElement.textContent = score;
@@ -49,7 +52,7 @@ upgradeButtonAutoclicker.addEventListener('click', () => {
 upgradeButtonWorker.addEventListener('click', () => {
     score -= upgradeWorkerCost;
     workers += 1;
-    upgradeWorkerCost *= 1.5;
+    upgradeWorkerCost *= 2;
     upgradeLabelWorker.textContent = 'BRIGÁDNÍCI (' + workers + ')';
     upgradeButtonWorker.textContent = upgradeWorkerCost;
     scoreElement.textContent = score;
